@@ -27,7 +27,7 @@ var routes = Routes{
 		Healthcheck,
 	},
 	Route{
-		"HealthcheckContainer",
+		"Healthcheck Container",
 		"GET",
 		"/healthcheck/{contName}",
 		HealthcheckContainer,
@@ -39,15 +39,33 @@ var routes = Routes{
 		IPsec,
 	},
 	Route{
+		"IPsec Container",
+		"GET",
+		"/ipsec/{contName}",
+		IPsecContainer,
+	},
+	Route{
 		"Network Services",
 		"GET",
 		"/network",
 		NetworkServices,
 	},
 	Route{
+		"Network Services Container",
+		"GET",
+		"/network/{contName}",
+		NetworkServicesContainer,
+	},
+	Route{
 		"Scheduler",
 		"GET",
 		"/scheduler",
 		Scheduler,
+	},
+	Route{
+		"Scheduler Container",
+		"GET",
+		"/scheduler/{contName}",
+		SchedulerContainer,
 	},
 }

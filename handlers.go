@@ -13,6 +13,7 @@ type templateData struct {
 	C            container.Container
 	Containers   container.Containers
 	TemplateType string
+	ServiceType  string
 }
 
 // Index route
@@ -30,6 +31,7 @@ func Healthcheck(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 	}
 	td.TemplateType = "service"
+	td.ServiceType = "healthcheck"
 	t.Execute(w, &td)
 }
 
@@ -45,6 +47,7 @@ func HealthcheckContainer(w http.ResponseWriter, r *http.Request) {
 	}
 	if td.C, ok = td.Containers[contName]; ok {
 		td.TemplateType = "container"
+		td.ServiceType = "healthcheck"
 		t.Execute(w, &td)
 	} else {
 		w.WriteHeader(404)
@@ -59,6 +62,7 @@ func IPsec(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 	}
 	td.TemplateType = "service"
+	td.ServiceType = "ipsec"
 	t.Execute(w, &td)
 }
 
@@ -74,6 +78,7 @@ func IPsecContainer(w http.ResponseWriter, r *http.Request) {
 	}
 	if td.C, ok = td.Containers[contName]; ok {
 		td.TemplateType = "container"
+		td.ServiceType = "ipsec"
 		t.Execute(w, &td)
 	} else {
 		w.WriteHeader(404)
@@ -88,6 +93,7 @@ func NetworkServices(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 	}
 	td.TemplateType = "service"
+	td.ServiceType = "network"
 	t.Execute(w, &td)
 }
 
@@ -103,6 +109,7 @@ func NetworkServicesContainer(w http.ResponseWriter, r *http.Request) {
 	}
 	if td.C, ok = td.Containers[contName]; ok {
 		td.TemplateType = "container"
+		td.ServiceType = "network"
 		t.Execute(w, &td)
 	} else {
 		w.WriteHeader(404)
@@ -117,6 +124,7 @@ func Scheduler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 	}
 	td.TemplateType = "service"
+	td.ServiceType = "scheduler"
 	t.Execute(w, &td)
 }
 
@@ -132,6 +140,7 @@ func SchedulerContainer(w http.ResponseWriter, r *http.Request) {
 	}
 	if td.C, ok = td.Containers[contName]; ok {
 		td.TemplateType = "container"
+		td.ServiceType = "scheduler"
 		t.Execute(w, &td)
 	} else {
 		w.WriteHeader(404)
