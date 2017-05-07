@@ -2,7 +2,7 @@ package container
 
 // Container Struct
 type Container struct {
-	//Host string
+	Host string
 	Name string
 	Logs []string
 }

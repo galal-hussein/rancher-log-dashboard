@@ -43,7 +43,7 @@
           <div class="well">
           <h3>Containers</h2>
               {{ range $id, $name := .Containers }}
-              <a href="/{{ $.ServiceType }}/{{ $id }}" class="btn btn-primary btn-block" role="button">{{ $name.Name }}</a>
+              <a href="/{{ $.ServiceType }}/{{ $id }}" class="btn btn-primary btn-block" role="button">{{ $name.Name }} - {{ $name.Host }}</a>
               {{end}}
           </div>
             {{ else if eq (.TemplateType) "container" }}

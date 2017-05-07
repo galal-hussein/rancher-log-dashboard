@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VERSION=0.1.0
+VERSION=dev
 REPO=${REPO:-husseingalal}
 TAG=${TAG:-${VERSION}}
 IMAGE=${REPO}/rancher-log-dashboard:${TAG}

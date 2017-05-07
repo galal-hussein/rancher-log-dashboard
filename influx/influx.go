@@ -57,15 +57,18 @@ func GetContainers(stackname string) container.Containers {
 		for _, record := range res.Values {
 			containerID := record[1].(string)
 			containerName := record[2].(string)
-			containerLog := record[3].(string)
+			containerHost := record[3].(string)
+			containerLog := record[4].(string)
 			var c container.Container
 			if _, ok := containers[containerID]; ok {
 				logs := append(containers[containerID].Logs, containerLog)
 				c.Name = containerName
+				c.Host = containerHost
 				c.Logs = logs
 				containers[containerID] = c
 			} else {
 				c.Name = containerName
+				c.Host = containerHost
 				c.Logs = append(c.Logs, containerLog)
 				containers[containerID] = c
 			}
